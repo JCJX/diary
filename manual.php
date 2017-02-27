@@ -105,7 +105,7 @@ echo $str_age2;
 $str_string1 ='甲问:"你学PHP？"';
 $str_string2 ="乙毫不犹豫地回答：'当然是！'";
 $str_string3 ='甲问:\'能告诉我网址吗？\'';
-$str_string4 ="乙答道:\"www.comici.win\"";
+$str_string4 ="乙答道:\"www.123456.win\"";
 echo $str_string1;
 echo "<br />";
 echo $str_string2;
@@ -769,7 +769,7 @@ $pi2->say();
 $pi3->say();   
 
 $pi4= new fruit("泡面","素面","细面");
-$pi4->say2();     //以此类推*/
+$pi4->say2();     //以此类推
 
 //继续尝试，为汽车增加10倍的速度
 
@@ -784,14 +784,69 @@ $car->speedup();
 echo $car->speed;
 
 
+static静态关键词
+静态属性与方法可以在不实例化类的情况下调用，直接使用类名::方法名的方式进行调用。
+静态属性不允许对象使用->操作符调用
+
+静态方法可以通过变量来进行动态调用
+$func = 'getSpeed';
+$className = 'Car';
+echo $className::$func();  //动态调用静态方法
+静态方法中，$this伪变量不允许使用。可以使用self，parent，static在内部调用静态方法与属性。
+class Car {
+    private static $speed = 10;
+    public static function getSpeed() {
+        return self::$speed;
+    }
+    public static function speedUp() {
+        return self::$speed+=10;
+    }
+}
+class BigCar extends Car {
+    public static function start() {
+        parent::speedUp();
+    }
+}
+BigCar::start();
+echo BigCar::getSpeed();
+
+实例如下
+	
+class Car {
+    private static $speed = 10;
+    
+    public function getSpeed() {
+        return self::$speed;
+    }
+    public static function speedUp(){ //定义一个静态方法，实现速度累加10
+        return self::$speed+=10;
+    }
+}
+$car = new Car();
+Car::speedUp();  //调用静态方法加速
+echo $car->getSpeed();  //调用共有方法输出当前的速度值
 
 
+php的访问控制关键词public，protected和private（公有、受保护、私有之一）
+类中的方法可以被定义为公有、私有或受保护。如果没有设置这些关键字，则该方法默认为公有
+如果构造函数定义成了私有方法，则不允许直接实例化对象了，这时候一般通过静态方法进行实例化，
+在设计模式中会经常使用这样的方法来控制对象的创建，比如单例模式只允许有一个全局唯一的对象。
+class Car {
+    private function __construct() {
+        echo 'object create';
+    }
 
-
-
-
-
-
+    private static $_object = null;
+    public static function getInstance() {
+        if (empty(self::$_object)) {
+            self::$_object = new Car(); //内部方法可以调用私有方法，因此这里可以创建对象
+        }
+        return self::$_object;
+    }
+}
+//$car = new Car(); //这里不允许直接实例化对象
+$car = Car::getInstance(); //通过静态方法来获得一个实例
+*/
 
 
 

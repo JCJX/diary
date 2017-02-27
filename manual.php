@@ -848,6 +848,27 @@ class Car {
 $car = Car::getInstance(); //通过静态方法来获得一个实例
 */
 
+PHP的类和对象的对象继承
+class Car {    //定义第一个类
+    public $speed = 0; //汽车的起始速度是0
+    
+    public function speedUp() {  //对象的方法是速度+10
+        $this->speed += 10;
+        return $this->speed;
+    }
+}
+class Truck extends Car{   //定义继承于Car的Truck类
+    public function speedUp(){     //覆盖speedUp方法使速度+50
+    $this->speed = parent::speedUp()+50;
+}
+}
+$car = new Truck();
+$car->speedUp();
+echo $car->speed;
+//说句实话学到这里我也懵懂懵懂的，先过一遍然后慢慢在继续深入理解下
+
+
+
 
 
 

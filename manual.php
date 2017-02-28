@@ -846,7 +846,7 @@ class Car {
 }
 //$car = new Car(); //这里不允许直接实例化对象
 $car = Car::getInstance(); //通过静态方法来获得一个实例
-*/
+
 
 PHP的类和对象的对象继承
 class Car {    //定义第一个类
@@ -868,11 +868,63 @@ echo $car->speed;
 //说句实话学到这里我也懵懂懵懂的，先过一遍然后慢慢在继续深入理解下
 
 
+PHP的字符串
+字符串变量用于包含字符串的值。
+一个字符串 通过下面的3种方法来定义：
+1、单引号
+2、双引号
+3、heredoc语法结构
+	实例	
+
+$str='hello world';
+$str2="hello world";
+   echo $str."<br />";
+   echo $str2;
 
 
 
 
+PHP字符串之单引号和双引号的区别
+在PHP中，字符串的定义可以使用英文单引号' '，也可以使用英文双引号" "。
+但是必须使用同一种单或双引号来定义字符串，如：'Hello World"和"Hello World'为非法的字符串定义。
+单引号和双引号到底有啥区别呢？
+PHP允许我们在双引号串中直接包含字串变量。
+而单引号串中的内容总被认为是普通字符。
+$hello="world";
+$str='hello $hello';  //运行结果: hello $hello
+$str2="hello $hello"; //运行结果: hello world
+
+PHP中的字符串可以使用.号来进行连接
+	$hello ='hello ';	
+	$world ='world';		
+echo $hello.$world; //输出结果 hello world
 
 
+PHP字符串以下自带函数去除字符串首尾的空格.
+trim去除一个字符串两端空格。
+rtrim是去除一个字符串右部空格，其中的r是right的缩写。
+ltrim是去除一个字符串左部空格，其中的l是left的缩写。
+函数使用方式
+echo trim(" 空格 ")."<br>";
+echo rtrim(" 空格 ")."<br>";
+echo ltrim(" 空格 ")."<br>";
+实例
+$str="      左侧空格要去掉";
+echo ltrim($str); //输出使用函数ltrim去除左边空格
+*/
 
+
+PHP获取字符串的长度函数strlen()
+	
+strlen函数对于计算英文字符是非常的擅长，但是如果有中文汉字，要计算长度可以使用
+mb_strlen()函数获取字符串中中文长度。实例
+$str=" 我的长度是  ";
+ $strl=mb_strlen($str);	
+ echo $strl;	
+	
+	
+	
+	
+	
+	
 ?>

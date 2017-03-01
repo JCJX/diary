@@ -911,7 +911,6 @@ echo ltrim(" 空格 ")."<br>";
 实例
 $str="      左侧空格要去掉";
 echo ltrim($str); //输出使用函数ltrim去除左边空格
-*/
 
 
 PHP获取字符串的长度函数strlen()
@@ -921,6 +920,68 @@ mb_strlen()函数获取字符串中中文长度。实例
 $str=" 我的长度是  ";
  $strl=mb_strlen($str);	
  echo $strl;	
+ 
+ 
+ PHP字符串的截取
+ 英文字符串的截取函数substr()
+函数说明：substr(字符串变量,开始截取的位置，截取个数）实例如下
+
+ $str='hello,world';
+echo substr($str,6,5);
+
+中文字符串的截取函数mb_substr()
+函数说明：mb_substr(字符串变量,开始截取的位置，截取个数, 网页编码）实例如下
+$str='我爱你，中国';//截取中国两个字
+echo mb_substr($str, 4, 2, 'utf8');//中文编码基本上为utf8
+
+
+PHP查找字符串,
+函数说明：strpos(要处理的字符串, 要定位的字符串, 定位的起始位置[可选])
+
+$str = 'I want to study at imooc';
+$pos = strpos($str, 'imooc');//查找imooc
+echo $pos;//结果显示19，表示从位置0开始，imooc在第19个位置开始出现
+
+PHP替换字符串
+函数说明：str_replace(要查找的字符串, 要替换的字符串, 被搜索的字符串, 替换进行计数[可选])实例如下
+$str = 'I Love Chian';
+str_replace('Chian','China',$str);//替换掉Chian为China
+
+
+PHP格式化字符串，函数说明：sprintf(格式, 要转化的字符串)
+返回：格式化好的字符串
+$str = '100.1';
+$result=sprintf('%01.3f',$str); //百分比符号为起始符号， 0，是 "填空字元" ，表示如果位置空着就用0来填满。
+//在 0 后面的是1，这个 1 是规定整个所有的字符串占位要有1位以上(小数点也算一个占位)。
+//最后的3则表示小数点后面的数字必须占三位，最后以 f "转换字符" 结尾。
+echo $result;
+
+php字符串合并和分隔
+函数说明：implode(分隔符[可选], 数组)
+$arr = array('Hello', 'World!');
+$result = implode('', $arr);
+print_r($result);//结果显示Hello World!
+
+函数说明：explode(分隔符[可选], 字符串)
+$str = 'apple,banana';
+$result = explode(',', $str);
+print_r($result);//结果显示array('apple','banana')
+
+
+PHP字符串的转义函数addslashes()
+说明：用于对特殊字符加上转义字符，返回一个字符串
+$str = "what's your name?";
+echo addslashes($str);//输出：what\'s your name?
+
+了解正则表达式
+
+
+
+
+
+*/
+
+
 	
 	
 	

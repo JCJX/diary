@@ -978,9 +978,9 @@ echo addslashes($str);//输出：what\'s your name?
 
 
 其他基础不做记录，开始边实践边学习，天天对着教程撸......
+curl模拟http请求
+
 */
-
-
 	
 	
 	
